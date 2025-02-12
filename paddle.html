@@ -1,48 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" color-mode="user">
+<html lang="en">
   <head>
-    <title>Harry Sotnick-Hommel's Paddle Overlay Checkout Demo</title>
+    <title>Paddle Checkout</title>
     <meta charset="UTF-8" />
 
     <!-- Load Paddle.js library to handle checkout -->
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    <style>
-      .page-container {
-        max-width: 900px;
-        margin: auto;
-        text-align: center;
-        margin-top: 2em;
-        padding-left: 1em;
-        padding-right: 1em;
-      }
-      .grid {
-        display: block;
-        margin-bottom: 1em;
-      }
-    </style>
+
+    <!-- Load the Paddle token from the backend -->
+    <script src="http://localhost:5000/config.js"></script>
   </head>
   <body>
     <script type="text/javascript">
-      Paddle.Environment.set("sandbox"); // Set to Sandbox for testing
+      document.addEventListener("DOMContentLoaded", function () {
+        Paddle.Environment.set("sandbox"); // Use Sandbox mode for testing
 
-      // Initialise Paddle with client-side token
-      Paddle.Initialize({
-        token: "test_9a13e2f706e5f5d9748377187ec", // client-side token
+        // Ensure the Paddle token is available before initializing
+        if (typeof PADDLE_CLIENT_TOKEN !== "undefined") {
+          Paddle.Initialize({
+            token: PADDLE_CLIENT_TOKEN, // Use the imported token from config.js
+          });
+          console.log("Paddle initialized with token:", PADDLE_CLIENT_TOKEN);
+        } else {
+          console.error(
+            "Paddle token not found. Make sure the backend is running."
+          );
+        }
       });
 
-      // Array of products w/ Price IDs and Quantities
-      let itemsList = [
-        {
-          priceId: "pri_01gsz8ntc6z7npqqp6j4ys0w1w",
-          quantity: 5,
-        },
-        {
-          priceId: "pri_01h1vjfevh5etwq3rb416a23h2",
-          quantity: 1,
-        },
-      ];
-
-      // open paddle checkout w/ specified items
+      // Function to open Paddle checkout
       function openCheckout(items) {
         Paddle.Checkout.open({
           items: items, // Pass items to checkout
@@ -50,12 +36,9 @@
       }
     </script>
 
-    <div class="page-container">
-      <!-- Checkout button triggering Paddle checkout overlay -->
+    <div>
       <a
         href="#"
-        class="Paddle_button"
-        data-theme="light"
         onclick='openCheckout([{ "priceId": "pri_01hrswc94vcn3ye84q0q0j3rdw" }])'
       >
         Checkout here!
