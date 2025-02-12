@@ -60,15 +60,15 @@ The server will run on `http://localhost:5000`
 Here's what your customers will experience:
 
 1. **Customer Details Entry**  
-   <img src="picsForReadMe/1_paddle_checkout2_Harry.jpg" alt="Customer Details Form" width="400"/>  
+   <img src="picsForReadMe/1_paddle_checkout2_Harry.jpg" alt="Customer Details Form" width="500"/>  
    Customers enter their contact information and location for VAT calculations.
 
 2. **Payment Method Selection**  
-   <img src="picsForReadMe/2_paddle_checkout_Harry.jpg" alt="Payment Method Selection" width="400"/>  
+   <img src="picsForReadMe/2_paddle_checkout_Harry.jpg" alt="Payment Method Selection" width="500"/>  
    Multiple payment options including PayPal, Google Pay, and credit card.
 
 3. **Order Confirmation**  
-   <img src="picsForReadMe/3_paddle_checkoutComplete_Harry.jpg" alt="Order Confirmation" width="400"/>  
+   <img src="picsForReadMe/3_paddle_checkoutComplete_Harry.jpg" alt="Order Confirmation" width="500"/>  
    Successful transaction confirmation with email notification.
 
 ## Usage
